@@ -1,7 +1,6 @@
 {
   "name": "Nathan",
   "version": "1.0.0",
-  "description": "",
   "main": "db.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,5 +13,14 @@
     "express": "^4.17.1",
     "pg": "^7.12.1",
     "sequelize": "^5.18.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertisafreeman/Acme-Products-Offerings-SQL.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robertisafreeman/Acme-Products-Offerings-SQL/issues"
+  },
+  "homepage": "https://github.com/robertisafreeman/Acme-Products-Offerings-SQL#readme",
+  "description": ""
 }
