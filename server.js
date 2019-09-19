@@ -5,7 +5,7 @@ const path = require('path');
 
 app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')));
 
-//app.use('/api', require('./api'));
+app.use('/api', require('./api'));
 
 syncOrSwim().then(() => {
 	const port = process.env.PORT || 3000;
