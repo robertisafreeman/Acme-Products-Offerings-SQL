@@ -27,23 +27,42 @@ const Offering = connection.define('offering', {
         primaryKey: true,
         defaultValue: UUIDV4
     },
-    price: {
-        type: DECIMAL
-    }
+    price: DECIMAL
 });
+
+const mapPromise = ( items, model ) => {
+    return Promise.all(items.map(item => model.create(item)));
+};
 
 const syncOrSwim = async () => {
     await connection.sync({ force: true});
     const products = [
         {name: 'Dopamine pills', suggestedPrice: 1.99 },
-        {name: 'Staples', suggestedPrice: 100.00 },
-        {name: 'Rabbit"s feet', suggestedPrice: 45.00 },
+        {name: 'Paper', suggestedPrice: 100.00 },
+        {name: 'Rabbit"s feet', suggestedPrice: 45.00 }
     ];
-    const [dP, staples, rF] = await mapPromise(products, Product);
-    const company = [
+    const [dP, paper, rF] = await mapPromise(products, Product);
+
+    const companies = [
         {name: 'Rite Aid'},
         {name: 'Staples'},
         {name: 'Bob"s Rabbit Store'}
     ];
-    const []
+    const [rA, staples, bRS] = await mapPromise(companies, Company);
+
+    const offerings = [
+        {price: 2.50},
+        {price: 110.00},
+        {price: 48.33}
+    ];
+    await mapPromise(offerings, Offering)
+}
+
+module.exports = {
+    syncOrSwim,
+    models: {
+        Product,
+        Company,
+        Offering
+    }
 }
